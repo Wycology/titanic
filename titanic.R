@@ -1,14 +1,14 @@
 library(e1071); library(xgboost); library(caret); library(doSNOW); library(ipred)
 
-train <- read.csv('data/train.csv')
-head(train)
+train <- read.csv('data/train.csv') # Reading in the data for model building.
+head(train) # Checking the head of the data, first six rows.
 
-table(train$Embarked)
-train$Embarked[train$Embarked == ""]  <- 'S' # Replacing missing values with mode
-table(train$Embarked)
+table(train$Embarked) # Checking the levels of this column of the data.
+train$Embarked[train$Embarked == ""]  <- 'S' # Replacing missing values with mode.
+table(train$Embarked) # Confirming the change.
 
-summary(train$Age)
-train$MissingAge <- ifelse(is.na(train$Age), 'Y', 'N')
+summary(train$Age) # This is to see how many NAs are in the column Age.
+train$MissingAge <- ifelse(is.na(train$Age), 'Y', 'N') # Creating column depicting missing values in Age
 train$FamilySize <- 1 + train$SibSp + train$Parch
 
 train$Survived <- as.factor(train$Survived)
