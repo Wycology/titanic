@@ -1,0 +1,12 @@
+knitr
+rmarkdown
+ggplot2
+lattice
+caret
+e1071
+foreach
+iterators
+snow
+doSNOW
+ipred
+xgboost
